@@ -509,13 +509,13 @@ $rCatLabels = ['eksterior'=>'Eksterior','interior'=>'Interior','3d_modeling'=>'3
             <form method="get" class="flex flex-wrap items-center gap-2">
               <input type="hidden" name="tab" value="gallery">
               <input type="text" name="gq" value="<?= h($gq) ?>" placeholder="Cari nama / deskripsi..." class="px-3 py-2 rounded-lg border border-gray-300">
-              <select name="gcat" class="px-3 py-2 rounded-lg border border-gray-300">
+              <!-- <select name="gcat" class="px-3 py-2 rounded-lg border border-gray-300">
                 <option value="">Semua Kategori</option>
                 <option value="tk" <?= $gcat==='tk'?'selected':'' ?>>Guru TK</option>
                 <option value="sd" <?= $gcat==='sd'?'selected':'' ?>>Guru SD</option>
                 <option value="smp" <?= $gcat==='smp'?'selected':'' ?>>Guru SMP</option>
                 <option value="sma" <?= $gcat==='sma'?'selected':'' ?>>Guru SMA</option>
-              </select>
+              </select> -->
               <select name="gstatus" class="px-3 py-2 rounded-lg border border-gray-300">
                 <option value="">Semua Status</option>
                 <option value="active" <?= $gstatus==='active'?'selected':'' ?>>Active</option>
@@ -618,7 +618,7 @@ $rCatLabels = ['eksterior'=>'Eksterior','interior'=>'Interior','3d_modeling'=>'3
                   <div>
                     <label class="block text-sm font-medium text-gray-700">Kategori</label>
                     <select name="category" class="mt-1 w-full px-3 py-2 rounded-lg border border-gray-300">
-                      <?php foreach (['tk'=>'Guru TK','sd'=>'Guru SD','smp'=>'Guru SMP','sma'=>'Guru SMA'] as $val=>$lab): ?>
+                      <?php foreach (['smp'=>'Guru SMP'] as $val=>$lab): ?>
                         <option value="<?= $val ?>" <?= ($mode==='edit' && $editingItem['category']===$val)?'selected':'' ?>><?= $lab ?></option>
                       <?php endforeach; ?>
                     </select>

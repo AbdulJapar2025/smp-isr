@@ -10,7 +10,7 @@ require_once __DIR__ . '/includes/config.php'; include("includes/header.php"); ?
     <div class="absolute inset-0 z-10 flex flex-col items-center justify-center text-center p-6 md:p-10 text-white">
       <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Visi & Misi</h1>
       <p class="mt-3 md:mt-4 text-base md:text-lg opacity-95">
-        SMA Ignatius Slamet Riyadi
+        SMP Ignatius Slamet Riyadi
       </p>
       <p class="mt-2 text-sm md:text-base opacity-90">
         Membangun Generasi Unggul dan Berkarakter
