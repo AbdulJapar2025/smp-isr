@@ -1,0 +1,20 @@
+# Default ke index.php
+DirectoryIndex index.php index.html
+
+# Matikan "penebak" URL & path info setelah .php
+Options -MultiViews
+AcceptPathInfo Off
+
+RewriteEngine On
+RewriteBase /
+
+# /index.php -> /
+RewriteCond %{THE_REQUEST} \s/+index\.php [NC]
+RewriteRule ^index\.php$ / [R=301,L]
+
+# Blok akses ke backup.html
+RewriteRule ^backup\.html$ - [F,L]
+
+# Normalkan pola /file.php/apa-pun -> /file.php
+RewriteCond %{REQUEST_URI} \.php/.+ [NC]
+RewriteRule ^(.+\.php)/.*$ /$1 [R=301,L]
