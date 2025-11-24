@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2025 at 06:47 AM
+-- Generation Time: Nov 24, 2025 at 11:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,7 +43,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `password`, `full_name`, `email`, `role`, `last_login`, `created_at`) VALUES
-(1, '4dm1n', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrator Utama', 'admin@isr.sch.id', 'superadmin', '2025-11-24 04:59:06', '2025-10-20 02:57:05');
+(1, '4dm1n', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrator Utama', 'admin@isr.sch.id', 'superadmin', '2025-11-24 09:40:18', '2025-10-20 02:57:05');
 
 -- --------------------------------------------------------
 
@@ -71,10 +71,10 @@ CREATE TABLE `berita` (
 --
 
 INSERT INTO `berita` (`id`, `title`, `slug`, `excerpt`, `content`, `image_path`, `category`, `status`, `views`, `author_id`, `created_at`, `updated_at`) VALUES
-(7, 'Energi dan Kreativitas Modern Dance SMP Ignatius Slamet Riyadi Resinda Memukau Pengunjung KCP', 'post-6923e12e34cce', 'Ekstrakurikuler Modern Dance SMP Ignatius Slamet Riyadi Resinda menampilkan aksi panggung penuh energi di Karawang Central Plaza (KCP). Kolaborasi gerakan, kekompakan, dan kepercayaan diri para siswa berhasil menarik perhatian pengunjung dan menunjukkan kualitas pembinaan ekstrakurikuler sekolah.', 'Ekstrakurikuler Modern Dance SMP Ignatius Slamet Riyadi Resinda kembali menunjukkan prestasinya melalui sebuah penampilan istimewa di Karawang Central Plaza (KCP). Dalam acara tersebut, para siswa tampil percaya diri dengan koreografi yang dinamis, kompak, dan memadukan berbagai gaya tari modern.\r\n\r\nPenampilan ini menjadi bentuk nyata dari proses latihan intensif yang selama ini dilakukan di sekolah. Dukungan penuh dari pelatih dan pihak sekolah membuat para anggota MD mampu menampilkan pertunjukan terbaik mereka di hadapan pengunjung mall.\r\n\r\nSelain menghibur, kegiatan ini juga menjadi ajang untuk memperluas pengalaman tampil di ruang publik, mengasah mental, kreativitas, serta kekompakan tim. Para pengunjung KCP terlihat antusias menyaksikan penampilan tersebut, bahkan banyak yang ikut mengabadikan momen lewat video dan foto.', 'uploads/berita/perform-ekskull-md-di-kcp-6923e12e34f3a.jpeg', 'kegiatan', 'active', 5, 1, '2025-11-24 04:38:06', '2025-11-24 05:43:25'),
+(7, 'Energi dan Kreativitas Modern Dance SMP Ignatius Slamet Riyadi Resinda Memukau Pengunjung KCP', 'post-6923e12e34cce', 'Ekstrakurikuler Modern Dance SMP Ignatius Slamet Riyadi Resinda menampilkan aksi panggung penuh energi di Karawang Central Plaza (KCP). Kolaborasi gerakan, kekompakan, dan kepercayaan diri para siswa berhasil menarik perhatian pengunjung dan menunjukkan kualitas pembinaan ekstrakurikuler sekolah.', 'Ekstrakurikuler Modern Dance SMP Ignatius Slamet Riyadi Resinda kembali menunjukkan prestasinya melalui sebuah penampilan istimewa di Karawang Central Plaza (KCP). Dalam acara tersebut, para siswa tampil percaya diri dengan koreografi yang dinamis, kompak, dan memadukan berbagai gaya tari modern.\r\n\r\nPenampilan ini menjadi bentuk nyata dari proses latihan intensif yang selama ini dilakukan di sekolah. Dukungan penuh dari pelatih dan pihak sekolah membuat para anggota MD mampu menampilkan pertunjukan terbaik mereka di hadapan pengunjung mall.\r\n\r\nSelain menghibur, kegiatan ini juga menjadi ajang untuk memperluas pengalaman tampil di ruang publik, mengasah mental, kreativitas, serta kekompakan tim. Para pengunjung KCP terlihat antusias menyaksikan penampilan tersebut, bahkan banyak yang ikut mengabadikan momen lewat video dan foto.', 'uploads/berita/perform-ekskull-md-di-kcp-692416c92d0d1.jpeg', 'kegiatan', 'active', 11, 1, '2025-11-24 04:38:06', '2025-11-24 10:08:00'),
 (8, 'Selasar Band SMP Ignatius Slamet Riyadi Resinda Guncang Panggung KCP dengan Aksi Musik Memukau', 'post-6923e1d74d125', 'Selasar Band SMP Ignatius Slamet Riyadi Resinda tampil energik di Karawang Central Plaza (KCP). Perpaduan vokal, gitar, bass, dan drum yang kompak berhasil menarik perhatian pengunjung dan menunjukkan kualitas bermusik para siswa.', 'Selasar Band, salah satu ekstrakurikuler musik SMP Ignatius Slamet Riyadi Resinda, berhasil memberikan penampilan terbaiknya saat tampil di Karawang Central Plaza (KCP). Membawakan beberapa lagu populer, mereka sukses menghadirkan suasana meriah dan hangat bagi para pengunjung mall.\r\n\r\nDengan suara vokalis yang kuat, permainan gitar dan bass yang rapi, serta hentakan drum yang stabil, Selasar Band menunjukkan bahwa para siswa memiliki kemampuan bermusik yang matang untuk usia mereka. Antusiasme penonton terlihat dari banyaknya pengunjung yang merekam, bersorak, bahkan ikut bernyanyi.', 'uploads/berita/perform-siswa-isr-selaras-band-di-kcp-6923e1d74d25e.jpeg', 'kegiatan', 'active', 1, 1, '2025-11-24 04:40:55', '2025-11-24 04:41:07'),
-(13, 'Siswa SMP Ignatius Slamet Riyadi Resinda Raih Juara 1 Lomba Pencak Silat Tingkat Daerah', 'post-6923f11761118', 'Siswa SMP Ignatius Slamet Riyadi Resinda berhasil meraih Juara 1 Lomba Pencak Silat pada kejuaraan tingkat daerah, membawa kebanggaan besar bagi sekolah.', 'Prestasi membanggakan kembali diraih oleh siswa SMP Ignatius Slamet Riyadi Resinda. Pada ajang Kejuaraan Pencak Silat tingkat daerah, salah satu perwakilan sekolah sukses meraih Juara 1 setelah menunjukkan performa terbaiknya di atas arena.\r\n\r\nTeknik yang matang, konsistensi, serta ketenangan selama bertanding membuat juri memberikan nilai tertinggi. Keberhasilan ini tidak lepas dari kerja keras siswa selama masa latihan serta dukungan penuh dari pelatih ekstrakurikuler pencak silat sekolah.\r\n\r\nPrestasi ini menjadi motivasi bagi seluruh siswa untuk terus mengembangkan potensi diri baik di bidang olahraga maupun kegiatan non-akademik lainnya.', 'uploads/berita/juara-1-lomba-pencak-silat-6923f117613a8.jpeg', 'akademik', 'active', 0, 1, '2025-11-24 05:45:59', NULL),
-(14, 'SMP Ignatius Slamet Riyadi Resinda Juara 1 Vocab Battle di LIA Karawang Festival 2025', 'post-6923f13e669b9', 'Siswa SMP Ignatius Slamet Riyadi Resinda menorehkan prestasi membanggakan dengan meraih Juara 1 Vocab Battle pada ajang LIA Karawang Festival 2025.', 'Prestasi akademik kembali diraih oleh SMP Ignatius Slamet Riyadi Resinda melalui kemenangan di LIA Karawang Festival 2025. Dalam kategori Vocab Battle, siswa sekolah berhasil meraih Juara 1, mengungguli peserta dari berbagai sekolah lain di Karawang.\r\n\r\nKompetisi ini menguji kemampuan siswa dalam penguasaan kosakata bahasa Inggris, ketepatan jawaban, dan kecepatan berpikir. Berkat persiapan yang baik, latihan intensif, serta kemampuan linguistik yang kuat, siswa SMP Ignatius Slamet Riyadi Resinda tampil percaya diri sejak babak penyisihan hingga babak final.\r\n\r\nKemenangan ini menjadi bukti bahwa siswa sekolah mampu berkompetisi dan unggul dalam bidang akademik, khususnya Bahasa Inggris.', 'uploads/berita/juara-1-lomba-vocab-battle-lia-6923f13e66c50.jpeg', 'akademik', 'active', 2, 1, '2025-11-24 05:46:38', '2025-11-24 05:46:50');
+(13, 'Siswa SMP Ignatius Slamet Riyadi Resinda Raih Juara 1 Lomba Pencak Silat Tingkat Daerah', 'post-6923f11761118', 'Siswa SMP Ignatius Slamet Riyadi Resinda berhasil meraih Juara 1 Lomba Pencak Silat pada kejuaraan tingkat daerah, membawa kebanggaan besar bagi sekolah.', 'Prestasi membanggakan kembali diraih oleh siswa SMP Ignatius Slamet Riyadi Resinda. Pada ajang Kejuaraan Pencak Silat tingkat daerah, salah satu perwakilan sekolah sukses meraih Juara 1 setelah menunjukkan performa terbaiknya di atas arena.\r\n\r\nTeknik yang matang, konsistensi, serta ketenangan selama bertanding membuat juri memberikan nilai tertinggi. Keberhasilan ini tidak lepas dari kerja keras siswa selama masa latihan serta dukungan penuh dari pelatih ekstrakurikuler pencak silat sekolah.\r\n\r\nPrestasi ini menjadi motivasi bagi seluruh siswa untuk terus mengembangkan potensi diri baik di bidang olahraga maupun kegiatan non-akademik lainnya.', 'uploads/berita/juara-1-lomba-pencak-silat-692416ab055a5.jpeg', 'prestasi', 'active', 8, 1, '2025-11-24 05:45:59', '2025-11-24 09:59:33'),
+(16, 'SMP Ignatius Slamet Riyadi Resinda Juara 1 Vocab Battle di LIA Karawang Festival 2025', 'post-692416876e821', 'Siswa SMP Ignatius Slamet Riyadi Resinda menorehkan prestasi membanggakan dengan meraih Juara 1 Vocab Battle pada ajang LIA Karawang Festival 2025.', 'Prestasi akademik kembali diraih oleh SMP Ignatius Slamet Riyadi Resinda melalui kemenangan di LIA Karawang Festival 2025. Dalam kategori Vocab Battle, siswa sekolah berhasil meraih Juara 1, mengungguli peserta dari berbagai sekolah lain di Karawang.', 'uploads/berita/juara-1-lomba-vocab-battle-lia-692416876eadd.jpeg', 'prestasi', 'active', 6, 1, '2025-11-24 08:25:43', '2025-11-24 10:03:27');
 
 -- --------------------------------------------------------
 
@@ -94,10 +94,10 @@ CREATE TABLE `berita_foto` (
 --
 
 INSERT INTO `berita_foto` (`id`, `berita_id`, `image_path`, `created_at`) VALUES
-(2, 7, 'uploads/berita/perform-ekskull-md-di-kcp-6923e12e37928.jpeg', '2025-11-24 04:38:06'),
-(3, 8, 'uploads/berita/perform-siswa-isr-selaras-band-di-kcp-6923e1d74e88f.jpeg', '2025-11-24 04:40:55'),
-(6, 13, 'uploads/berita/juara-1-lomba-pencak-silat-6923f117649fd.jpeg', '2025-11-24 05:45:59'),
-(7, 14, 'uploads/berita/juara-1-lomba-vocab-battle-lia-6923f13e695b4.jpeg', '2025-11-24 05:46:38');
+(2, 7, 'uploads/berita/perform-ekskull-md-di-kcp-692416c92d0d1.jpeg', '2025-11-24 04:38:06'),
+(3, 8, 'uploads/berita/perform-siswa-isr-selaras-band-di-kcp-6923e1d74d25e.jpeg', '2025-11-24 04:40:55'),
+(6, 13, 'uploads/berita/juara-1-lomba-pencak-silat-692416ab055a5.jpeg', '2025-11-24 05:45:59'),
+(8, 16, 'uploads/berita/juara-1-lomba-vocab-battle-lia-692416876eadd.jpeg', '2025-11-24 08:25:43');
 
 -- --------------------------------------------------------
 
@@ -163,7 +163,7 @@ CREATE TABLE `kegiatan` (
 --
 
 INSERT INTO `kegiatan` (`id`, `title`, `slug`, `excerpt`, `content`, `image_path`, `category`, `status`, `author_id`, `created_at`, `updated_at`) VALUES
-(13, 'Penampilan Modern Dance SMP Ignatius Slamet Riyadi Resinda di Karawang Central Plaza', 'post-6923e25f3ba76', 'Ekstrakurikuler Modern Dance SMP Ignatius Slamet Riyadi Resinda menampilkan tarian energik dan kompak di KCP sebagai bagian dari kegiatan tampil di ruang publik. Kegiatan ini merupakan bentuk pengembangan bakat siswa serta ajang pengalaman nyata tampil di hadapan masyarakat.', 'Kegiatan penampilan Modern Dance SMP Ignatius Slamet Riyadi Resinda di Karawang Central Plaza berlangsung meriah dan penuh semangat. Para anggota MD menunjukkan kekompakan gerakan dan koreografi yang telah dilatih secara intensif. Dengan kostum seragam dan musik yang upbeat, para siswa berhasil menarik perhatian banyak pengunjung mall.\r\n\r\nSelama kegiatan berlangsung, siswa tampil dengan percaya diri dan mampu memberikan kesan positif melalui energi dan ekspresi yang kuat. Dokumentasi mencakup momen persiapan sebelum tampil, proses koreografi di panggung, interaksi dengan penonton, hingga sesi foto bersama setelah pertunjukan.\r\n\r\nKegiatan ini sekaligus menjadi wadah pengembangan bakat dan karakter, mulai dari kerja sama tim, kedisiplinan, hingga keberanian tampil di ruang publik. Modern Dance berhasil membawa nama sekolah dan menunjukkan bahwa ekstrakurikuler seni di SMP Ignatius Slamet Riyadi Resinda terus berkembang.', 'uploads/kegiatan/perform-ekskull-md-di-kcp-6923e25f3ba87.jpeg', 'umum', 'active', 1, '2025-11-24 04:43:11', NULL),
+(13, 'Penampilan Modern Dance SMP Ignatius Slamet Riyadi Resinda di Karawang Central Plaza', 'post-6923e25f3ba76', 'Ekstrakurikuler Modern Dance SMP Ignatius Slamet Riyadi Resinda menampilkan tarian energik dan kompak di KCP sebagai bagian dari kegiatan tampil di ruang publik. Kegiatan ini merupakan bentuk pengembangan bakat siswa serta ajang pengalaman nyata tampil di hadapan masyarakat.', 'Kegiatan penampilan Modern Dance SMP Ignatius Slamet Riyadi Resinda di Karawang Central Plaza berlangsung meriah dan penuh semangat. Para anggota MD menunjukkan kekompakan gerakan dan koreografi yang telah dilatih secara intensif. Dengan kostum seragam dan musik yang upbeat, para siswa berhasil menarik perhatian banyak pengunjung mall.\r\n\r\nSelama kegiatan berlangsung, siswa tampil dengan percaya diri dan mampu memberikan kesan positif melalui energi dan ekspresi yang kuat. Dokumentasi mencakup momen persiapan sebelum tampil, proses koreografi di panggung, interaksi dengan penonton, hingga sesi foto bersama setelah pertunjukan.\r\n\r\nKegiatan ini sekaligus menjadi wadah pengembangan bakat dan karakter, mulai dari kerja sama tim, kedisiplinan, hingga keberanian tampil di ruang publik. Modern Dance berhasil membawa nama sekolah dan menunjukkan bahwa ekstrakurikuler seni di SMP Ignatius Slamet Riyadi Resinda terus berkembang.', 'uploads/kegiatan/perform-ekskull-md-di-kcp-6923e25f3dfac.jpeg', 'umum', 'active', 1, '2025-11-24 04:43:11', NULL),
 (14, 'Penampilan Selasar Band SMP Ignatius Slamet Riyadi Resinda di Karawang Central Plaza', 'post-6923e28b103d5', 'Selasar Band dari SMP Ignatius Slamet Riyadi Resinda berhasil menampilkan musik terbaik mereka di KCP. Dengan harmonisasi yang solid, penampilan ini menjadi bentuk nyata dari pembinaan bakat musik siswa serta kesempatan tampil di panggung publik.', 'Penampilan Selasar Band di Karawang Central Plaza menjadi salah satu momen penting dalam kegiatan pengembangan seni musik di SMP Ignatius Slamet Riyadi Resinda. Para personel band tampil membawakan beberapa lagu pilihan dengan aransemen yang rapi dan pembawaan penuh percaya diri.\r\n\r\nDokumentasi kegiatan menampilkan suasana latihan sebelum tampil, soundcheck, aksi panggung masing-masing personel, hingga respon antusias dari penonton. Vokal yang kuat, permainan gitar dan bass yang kompak, serta ketukan drum yang stabil membuat penampilan mereka semakin hidup.\r\n\r\nKegiatan tampil di KCP memberikan pengalaman bermusik di panggung publik yang sangat bermanfaat bagi siswa. Selain menunjukkan kreativitas, kegiatan ini juga memperkuat kerja sama tim, disiplin dalam latihan, serta keberanian unjuk diri.\r\n\r\nSelasar Band berhasil mempersembahkan penampilan yang membanggakan bagi sekolah serta menjadi inspirasi bagi siswa lain untuk terus mengembangkan bakat di bidang musik.', 'uploads/kegiatan/perform-siswa-isr-selaras-band-di-kcp-6923e28b103e1.jpeg', 'umum', 'active', 1, '2025-11-24 04:43:55', NULL),
 (15, 'Latihan Dasar Kepemimpinan (LDK) OSIS SMP Ignatius Slamet Riyadi Resinda Tahun 2025', 'post-6923e33ce0592', 'Kegiatan Latihan Dasar Kepemimpinan (LDK) OSIS SMP Ignatius Slamet Riyadi Resinda dilaksanakan untuk membekali pengurus OSIS baru dengan keterampilan kepemimpinan, kerja sama tim, disiplin, serta karakter tanggung jawab dalam menjalankan amanah organisasi sekolah.', 'Kegiatan Latihan Dasar Kepemimpinan (LDK) OSIS SMP Ignatius Slamet Riyadi Resinda tahun 2025 berlangsung dengan lancar dan penuh antusiasme. Kegiatan ini merupakan agenda rutin sekolah yang bertujuan membentuk karakter kepemimpinan siswa, terutama bagi para pengurus OSIS periode terbaru.\r\n\r\nSelama kegiatan LDK, para peserta mendapatkan materi tentang kepemimpinan, komunikasi efektif, manajemen organisasi, serta pembentukan karakter. Sesi pelatihan dipandu oleh pembina OSIS dan narasumber yang berpengalaman di bidang kepemimpinan pelajar. Selain materi di dalam ruangan, peserta juga mengikuti kegiatan luar ruangan yang dirancang untuk melatih kerja sama, kekompakan, dan problem solving melalui sejumlah simulasi dan permainan edukatif.\r\n\r\nDokumentasi kegiatan mencakup momen pembukaan, pemaparan materi, diskusi kelompok, praktik kepemimpinan, hingga sesi evaluasi dan penutupan. Seluruh kegiatan berjalan tertib dan penuh semangat, menunjukkan komitmen siswa untuk menjadi pengurus OSIS yang kreatif, bertanggung jawab, dan mampu memberikan kontribusi positif bagi sekolah.\r\n\r\nMelalui kegiatan ini, diharapkan para pengurus OSIS memiliki bekal kemampuan organisasi, karakter kepemimpinan, serta kesiapan menjalankan program-program OSIS selama satu periode ke depan. SMP Ignatius Slamet Riyadi Resinda terus berkomitmen membimbing siswa agar menjadi pemimpin muda yang berintegritas dan berprestasi', 'uploads/kegiatan/kegiatan-ldk-osis-compressed-6923e33ce05c0.jpg', 'umum', 'active', 1, '2025-11-24 04:46:52', NULL);
 
@@ -186,8 +186,8 @@ CREATE TABLE `kegiatan_foto` (
 
 INSERT INTO `kegiatan_foto` (`id`, `kegiatan_id`, `image_path`, `created_at`) VALUES
 (14, 13, 'uploads/kegiatan/perform-ekskull-md-di-kcp-6923e25f3dfac.jpeg', '2025-11-24 04:43:11'),
-(15, 14, 'uploads/kegiatan/perform-siswa-isr-selaras-band-di-kcp-6923e28b131d4.jpeg', '2025-11-24 04:43:55'),
-(16, 15, 'uploads/kegiatan/kegiatan-ldk-osis-compressed-6923e33ce0e86.jpg', '2025-11-24 04:46:52');
+(15, 14, 'uploads/kegiatan/perform-siswa-isr-selaras-band-di-kcp-6923e28b103e1.jpeg', '2025-11-24 04:43:55'),
+(16, 15, 'uploads/kegiatan/kegiatan-ldk-osis-compressed-6923e33ce05c0.jpg', '2025-11-24 04:46:52');
 
 -- --------------------------------------------------------
 
@@ -275,25 +275,25 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `berita_foto`
 --
 ALTER TABLE `berita_foto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `kegiatan_foto`
@@ -305,7 +305,7 @@ ALTER TABLE `kegiatan_foto`
 -- AUTO_INCREMENT for table `render_art`
 --
 ALTER TABLE `render_art`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
