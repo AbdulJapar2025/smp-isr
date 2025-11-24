@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 23, 2025 at 06:52 AM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Host: localhost
+-- Generation Time: Nov 24, 2025 at 05:53 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,14 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admins` (
-  `id` int NOT NULL,
-  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `full_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `role` enum('superadmin','admin','editor') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'admin',
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `full_name` varchar(100) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `role` enum('superadmin','admin','editor') DEFAULT 'admin',
   `last_login` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `password`, `full_name`, `email`, `role`, `last_login`, `created_at`) VALUES
-(1, '4dm1n', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrator Utama', 'admin@isr.sch.id', 'superadmin', '2025-11-21 12:15:26', '2025-10-20 02:57:05');
+(1, '4dm1n', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrator Utama', 'admin@isr.sch.id', 'superadmin', '2025-11-24 03:25:46', '2025-10-20 02:57:05');
 
 -- --------------------------------------------------------
 
@@ -52,18 +52,18 @@ INSERT INTO `admins` (`id`, `username`, `password`, `full_name`, `email`, `role`
 --
 
 CREATE TABLE `berita` (
-  `id` int NOT NULL,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `excerpt` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `image_path` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `category` enum('akademik','prestasi','kegiatan','pengumuman') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'akademik',
-  `status` enum('active','inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'active',
-  `views` int DEFAULT '0',
-  `author_id` int DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `excerpt` text DEFAULT NULL,
+  `content` longtext DEFAULT NULL,
+  `image_path` varchar(500) DEFAULT NULL,
+  `category` enum('akademik','prestasi','kegiatan','pengumuman') NOT NULL DEFAULT 'akademik',
+  `status` enum('active','inactive') NOT NULL DEFAULT 'active',
+  `views` int(11) DEFAULT 0,
+  `author_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -71,7 +71,8 @@ CREATE TABLE `berita` (
 --
 
 INSERT INTO `berita` (`id`, `title`, `slug`, `excerpt`, `content`, `image_path`, `category`, `status`, `views`, `author_id`, `created_at`, `updated_at`) VALUES
-(4, 'Sanyus Cup', 'post-69206176100f5', 'Tim SD Ignatius Slamet Riyadi berhasil meraih prestasi membanggakan pada ajang Sanyus Cup. Dengan semangat sportivitas dan kerja sama, siswa menunjukkan kemampuan terbaiknya dan membawa pulang hasil yang membanggakan bagi sekolah.', 'SD Ignatius Slamet Riyadi kembali menorehkan prestasi melalui ajang kompetisi olahraga “Sanyus Cup” yang diikuti oleh berbagai sekolah di wilayah Karawang. Kegiatan ini menjadi momentum penting untuk mengasah bakat, mental bertanding, serta membangun karakter sportivitas di kalangan siswa.\r\n\r\nDalam kompetisi tersebut, tim dari SD Ignatius Slamet Riyadi tampil dengan penuh semangat dan percaya diri. Melalui latihan yang disiplin dan dukungan dari para guru pendamping, para siswa mampu menunjukkan performa terbaik mereka.\r\n\r\nBeberapa pencapaian yang diraih antara lain:\r\n\r\n• Penampilan unggul di babak penyisihan\r\n• Kerja sama tim yang solid dan terarah\r\n• Kemampuan teknik dan strategi yang semakin berkembang\r\n• Sikap sportivitas yang tinggi selama pertandingan\r\n\r\nSelain prestasi dalam pertandingan, ajang Sanyus Cup juga memberikan pengalaman berharga bagi para siswa dalam:\r\n\r\n• Belajar menghadapi tantangan\r\n• Menghargai lawan dan menjunjung fair play\r\n• Menguatkan rasa percaya diri dan tanggung jawab\r\n• Mengembangkan kemampuan komunikasi dan kerja sama\r\n\r\nSekolah memberikan apresiasi yang setinggi-tingginya kepada seluruh siswa yang telah berpartisipasi. Prestasi ini menjadi motivasi bagi semua peserta didik untuk terus berkembang dan mengukir prestasi di masa yang akan datang.\r\n\r\nTerima kasih kepada para guru pembimbing, orang tua, dan seluruh pihak yang telah mendukung keberhasilan tim Sanyus Cup tahun ini.\r\n\r\nSD Ignatius Slamet Riyadi – Berkarya, Berprestasi, dan Menginspirasi!', 'uploads/berita/sanyus-cup-6920617611952.jpeg', 'prestasi', 'active', 0, 1, '2025-11-21 12:56:22', NULL);
+(7, 'Energi dan Kreativitas Modern Dance SMP Ignatius Slamet Riyadi Resinda Memukau Pengunjung KCP', 'post-6923e12e34cce', 'Ekstrakurikuler Modern Dance SMP Ignatius Slamet Riyadi Resinda menampilkan aksi panggung penuh energi di Karawang Central Plaza (KCP). Kolaborasi gerakan, kekompakan, dan kepercayaan diri para siswa berhasil menarik perhatian pengunjung dan menunjukkan kualitas pembinaan ekstrakurikuler sekolah.', 'Ekstrakurikuler Modern Dance SMP Ignatius Slamet Riyadi Resinda kembali menunjukkan prestasinya melalui sebuah penampilan istimewa di Karawang Central Plaza (KCP). Dalam acara tersebut, para siswa tampil percaya diri dengan koreografi yang dinamis, kompak, dan memadukan berbagai gaya tari modern.\r\n\r\nPenampilan ini menjadi bentuk nyata dari proses latihan intensif yang selama ini dilakukan di sekolah. Dukungan penuh dari pelatih dan pihak sekolah membuat para anggota MD mampu menampilkan pertunjukan terbaik mereka di hadapan pengunjung mall.\r\n\r\nSelain menghibur, kegiatan ini juga menjadi ajang untuk memperluas pengalaman tampil di ruang publik, mengasah mental, kreativitas, serta kekompakan tim. Para pengunjung KCP terlihat antusias menyaksikan penampilan tersebut, bahkan banyak yang ikut mengabadikan momen lewat video dan foto.', 'uploads/berita/perform-ekskull-md-di-kcp-6923e12e34f3a.jpeg', 'kegiatan', 'active', 2, 1, '2025-11-24 04:38:06', '2025-11-24 04:38:28'),
+(8, 'Selasar Band SMP Ignatius Slamet Riyadi Resinda Guncang Panggung KCP dengan Aksi Musik Memukau', 'post-6923e1d74d125', 'Selasar Band SMP Ignatius Slamet Riyadi Resinda tampil energik di Karawang Central Plaza (KCP). Perpaduan vokal, gitar, bass, dan drum yang kompak berhasil menarik perhatian pengunjung dan menunjukkan kualitas bermusik para siswa.', 'Selasar Band, salah satu ekstrakurikuler musik SMP Ignatius Slamet Riyadi Resinda, berhasil memberikan penampilan terbaiknya saat tampil di Karawang Central Plaza (KCP). Membawakan beberapa lagu populer, mereka sukses menghadirkan suasana meriah dan hangat bagi para pengunjung mall.\r\n\r\nDengan suara vokalis yang kuat, permainan gitar dan bass yang rapi, serta hentakan drum yang stabil, Selasar Band menunjukkan bahwa para siswa memiliki kemampuan bermusik yang matang untuk usia mereka. Antusiasme penonton terlihat dari banyaknya pengunjung yang merekam, bersorak, bahkan ikut bernyanyi.', 'uploads/berita/perform-siswa-isr-selaras-band-di-kcp-6923e1d74d25e.jpeg', 'kegiatan', 'active', 1, 1, '2025-11-24 04:40:55', '2025-11-24 04:41:07');
 
 -- --------------------------------------------------------
 
@@ -80,11 +81,19 @@ INSERT INTO `berita` (`id`, `title`, `slug`, `excerpt`, `content`, `image_path`,
 --
 
 CREATE TABLE `berita_foto` (
-  `id` int NOT NULL,
-  `berita_id` int NOT NULL,
-  `image_path` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `berita_id` int(11) NOT NULL,
+  `image_path` varchar(500) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `berita_foto`
+--
+
+INSERT INTO `berita_foto` (`id`, `berita_id`, `image_path`, `created_at`) VALUES
+(2, 7, 'uploads/berita/perform-ekskull-md-di-kcp-6923e12e37928.jpeg', '2025-11-24 04:38:06'),
+(3, 8, 'uploads/berita/perform-siswa-isr-selaras-band-di-kcp-6923e1d74e88f.jpeg', '2025-11-24 04:40:55');
 
 -- --------------------------------------------------------
 
@@ -93,14 +102,14 @@ CREATE TABLE `berita_foto` (
 --
 
 CREATE TABLE `gallery` (
-  `id` int NOT NULL,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `image_path` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `category` enum('tk','sd','smp','sma') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `status` enum('active','inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'active',
-  `created_by` int DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `image_path` varchar(500) NOT NULL,
+  `category` enum('tk','sd','smp','sma') NOT NULL,
+  `status` enum('active','inactive') DEFAULT 'active',
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -110,17 +119,17 @@ CREATE TABLE `gallery` (
 --
 
 CREATE TABLE `kegiatan` (
-  `id` int NOT NULL,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `excerpt` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `image_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `category` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'umum',
-  `status` enum('active','inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'active',
-  `author_id` int DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `excerpt` text DEFAULT NULL,
+  `content` longtext DEFAULT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
+  `category` varchar(50) NOT NULL DEFAULT 'umum',
+  `status` enum('active','inactive') NOT NULL DEFAULT 'active',
+  `author_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -128,11 +137,9 @@ CREATE TABLE `kegiatan` (
 --
 
 INSERT INTO `kegiatan` (`id`, `title`, `slug`, `excerpt`, `content`, `image_path`, `category`, `status`, `author_id`, `created_at`, `updated_at`) VALUES
-(4, 'Kegiatan Koor misa sekolah', 'misa-sekolah', 'Kegiatan Koor Misa Sekolah SD Ignatius Slamet Riyadi berlangsung dengan penuh sukacita dan keterlibatan siswa. Melalui latihan rutin dan pendampingan guru, siswa belajar bernyanyi dengan baik serta membangun sikap disiplin, tanggung jawab, dan kebersamaan.', 'SD Ignatius Slamet Riyadi kembali melaksanakan kegiatan Koor Misa Sekolah sebagai bagian dari pembinaan iman dan karakter bagi para siswa. Kegiatan ini diikuti oleh siswa-siswi dari berbagai tingkat, yang secara khusus dipilih dan dibimbing untuk menjadi petugas koor dalam perayaan misa sekolah.\r\n\r\nSetiap minggu, siswa menjalani latihan rutin yang dipandu oleh guru pendamping. Melalui kegiatan ini, mereka tidak hanya belajar teknik vokal dan penguasaan lagu liturgi, tetapi juga menumbuhkan nilai-nilai penting seperti:\r\n\r\n• Kedisiplinan dalam mengikuti jadwal latihan\r\n• Kerja sama dalam membentuk harmoni suara\r\n• Tanggung jawab dalam menjalankan peran selama misa\r\n• Kepercayaan diri saat tampil di hadapan jemaat\r\n\r\nPada pelaksanaan misa, para siswa menunjukkan penampilan terbaik mereka. Suasana misa menjadi semakin khidmat berkat perpaduan suara merdu serta semangat pelayanan yang ditunjukkan oleh anak-anak.\r\n\r\nKegiatan ini diharapkan dapat terus menjadi ruang pembinaan positif bagi siswa, sekaligus memperkuat peran sekolah dalam menanamkan nilai-nilai Kristiani melalui pelayanan sederhana namun bermakna.\r\n\r\nSD Ignatius Slamet Riyadi berkomitmen untuk terus mendukung kegiatan yang membangun iman, karakter, dan kreativitas siswa.', 'uploads/kegiatan/petugas-koor-misa-sekolah-69205999cc197.jpeg', 'berita', 'active', 1, '2025-11-21 12:22:49', NULL),
-(5, 'Penyambuatan Siswa Baru', 'post-69205a4ff35b7', 'SD Ignatius Slamet Riyadi melaksanakan kegiatan penyambutan siswa baru sebagai awal perjalanan mereka di lingkungan sekolah. Acara berlangsung hangat dan penuh antusiasme, memperkenalkan siswa pada lingkungan, guru, serta budaya sekolah.', 'SD Ignatius Slamet Riyadi menggelar kegiatan Penyambutan Siswa Baru sebagai langkah awal bagi peserta didik baru untuk mengenal lingkungan sekolah. Acara ini menjadi momen penting dalam memulai perjalanan pendidikan mereka, sekaligus membangun rasa percaya diri dan kenyamanan dalam beradaptasi dengan suasana baru.\r\n\r\nKegiatan penyambutan berlangsung dengan suasana hangat dan penuh antusiasme. Para siswa baru diperkenalkan dengan:\r\n\r\n• Guru-guru yang akan mendampingi proses belajar mengajar\r\n• Fasilitas sekolah, seperti ruang kelas, perpustakaan, aula, dan area bermain\r\n• Peraturan serta budaya sekolah yang menekankan kedisiplinan, sopan santun, dan nilai-nilai Kristiani\r\n\r\nSelain itu, para guru memberikan pengarahan ringan mengenai kegiatan belajar, tata tertib, serta nilai-nilai karakter yang menjadi ciri khas SD Ignatius Slamet Riyadi. Melalui penyambutan ini, sekolah berharap siswa dapat lebih cepat beradaptasi dan membangun semangat positif dalam memulai tahun ajaran baru.\r\n\r\nSD Ignatius Slamet Riyadi berkomitmen untuk memberikan lingkungan belajar yang aman, nyaman, dan penuh kasih, sehingga setiap siswa dapat berkembang secara optimal baik dalam akademik maupun karakter.', 'uploads/kegiatan/penyambutan-siswa-baru-69205a4ff37aa.jpeg', 'umum', 'active', 1, '2025-11-21 12:25:52', NULL),
-(7, 'Lomba BKSN', 'bksn', 'SD Ignatius Slamet Riyadi mengadakan Lomba BKSN sebagai bagian dari perayaan Bulan Kitab Suci Nasional. Kegiatan ini bertujuan menumbuhkan kecintaan siswa pada Kitab Suci serta mendorong mereka untuk berani tampil, berkreasi, dan mengembangkan bakat rohani.', 'Dalam rangka memperingati Bulan Kitab Suci Nasional (BKSN), SD Ignatius Slamet Riyadi menyelenggarakan Lomba BKSN yang dapat diikuti oleh seluruh siswa dari berbagai jenjang. Kegiatan ini menjadi momen istimewa untuk menumbuhkan kecintaan anak-anak terhadap Kitab Suci serta mengajak mereka lebih aktif dalam memahami dan menghidupi nilai-nilai iman dalam kehidupan sehari-hari.\r\n\r\nAdapun jenis lomba yang diselenggarakan meliputi:\r\n\r\n• Membaca Kitab Suci\r\n• Menghafal ayat-ayat Kitab Suci\r\n• Mewarnai dan menggambar bertema Kitab Suci\r\n• Drama atau mini stage performance\r\n• Cerdas cermat Alkitab (opsional, jika ada)\r\n\r\nMelalui kegiatan ini, siswa diajak untuk:\r\n\r\n• Meningkatkan pengetahuan tentang Kitab Suci\r\n• Mengembangkan kreativitas dan kemampuan berekspresi\r\n• Menumbuhkan sikap percaya diri\r\n• Memperdalam nilai iman melalui kegiatan yang menyenangkan\r\n\r\nLomba BKSN diharapkan menjadi wadah pembinaan rohani yang positif, sekaligus mempererat kebersamaan antar siswa. Pemenang lomba akan diumumkan setelah seluruh rangkaian kegiatan selesai, dan sekolah memberikan apresiasi bagi setiap siswa yang telah berpartisipasi.\r\n\r\nSemoga kegiatan ini menjadi berkat dan motivasi bagi seluruh siswa untuk semakin mencintai Sabda Tuhan dalam kehidupan sehari-hari.', 'uploads/kegiatan/lomba-bksn-1-69205bcc6f947.jpeg', 'umum', 'active', 1, '2025-11-21 12:32:12', NULL),
-(8, 'Literasi', 'post-69205cd322edb', 'Kegiatan Literasi di SD Ignatius Slamet Riyadi dilaksanakan untuk menumbuhkan minat baca serta meningkatkan kemampuan siswa dalam memahami informasi. Melalui program ini, siswa diajak untuk membaca, menulis, dan berkreasi dalam suasana belajar yang menyenangkan.', 'SD Ignatius Slamet Riyadi kembali mengadakan kegiatan Literasi sebagai bagian dari upaya sekolah untuk meningkatkan budaya membaca dan kemampuan literasi siswa. Kegiatan ini menjadi agenda rutin yang bertujuan menumbuhkan minat baca sejak dini serta mengasah keterampilan memahami, menulis, dan menyampaikan informasi secara kreatif.\r\n\r\nDalam pelaksanaannya, siswa mengikuti berbagai aktivitas menarik seperti:\r\n\r\n• Membaca buku cerita pilihan yang disediakan oleh sekolah\r\n• Menyusun ringkasan atau cerita pendek dari buku yang dibaca\r\n• Membuat poster atau ilustrasi untuk melatih kreativitas visual\r\n• Diskusi singkat bersama guru mengenai isi bacaan\r\n• Membacakan cerita di depan teman-teman untuk meningkatkan kepercayaan diri\r\n\r\nKegiatan literasi ini dirancang agar siswa dapat belajar secara menyenangkan, sekaligus melatih konsentrasi, imajinasi, dan kemampuan berbahasa. Guru-guru juga mendampingi siswa untuk memastikan setiap anak dapat mengikuti kegiatan dengan baik sesuai tingkat kemampuannya.\r\n\r\nProgram Literasi menjadi salah satu komitmen SD Ignatius Slamet Riyadi dalam membangun karakter siswa yang gemar membaca, berpikir kritis, dan mampu mengekspresikan diri secara positif. Sekolah berharap kegiatan ini terus memberi dampak baik bagi perkembangan akademik maupun kreativitas siswa.\r\n\r\nSemoga budaya literasi ini semakin berkembang dan menjadi kebiasaan baik bagi seluruh peserta didik.', 'uploads/kegiatan/literasi-1-69205cd3230d5.jpeg', 'berita', 'active', 1, '2025-11-21 12:36:35', NULL),
-(9, 'HUT RI', 'post-69205d6f8de8a', 'SD Ignatius Slamet Riyadi merayakan Hari Ulang Tahun Republik Indonesia dengan berbagai kegiatan yang meriah dan edukatif. Melalui lomba serta upacara bendera, siswa diajak menumbuhkan jiwa nasionalisme dan rasa cinta tanah air.', 'Dalam rangka memperingati Hari Ulang Tahun Republik Indonesia, SD Ignatius Slamet Riyadi menyelenggarakan berbagai kegiatan untuk menanamkan semangat nasionalisme kepada para siswa. Perayaan tahun ini berlangsung meriah, penuh antusiasme, dan diikuti oleh seluruh warga sekolah.\r\n\r\nAcara dimulai dengan upacara bendera yang dilaksanakan dengan khidmat. Para petugas upacara dari siswa tampil dengan penuh tanggung jawab, menunjukkan kedisiplinan serta rasa hormat pada perjuangan para pahlawan bangsa.\r\n\r\nUsai upacara, rangkaian kegiatan dilanjutkan dengan berbagai perlombaan khas 17 Agustus, seperti:\r\n\r\n• Lomba balap karung\r\n• Lomba makan kerupuk\r\n• Lomba tarik tambang\r\n• Lomba membawa kelereng\r\n• Lomba estafet air\r\n• Permainan-permainan edukatif lainnya\r\n\r\nMelalui kegiatan ini, siswa diajak untuk:\r\n\r\n• Menumbuhkan kerja sama dan sportivitas\r\n• Menghargai perjuangan pahlawan dan kemerdekaan\r\n• Membangun kebersamaan antar teman\r\n• Melatih keberanian dan rasa percaya diri\r\n\r\nSuasana perayaan HUT RI di sekolah tampak penuh warna dan kegembiraan. Guru dan siswa saling mendukung dalam setiap kegiatan, sehingga tercipta lingkungan belajar yang positif dan menyenangkan.\r\n\r\nSD Ignatius Slamet Riyadi berharap perayaan ini dapat menjadi sarana pembinaan karakter, semangat persatuan, dan kecintaan terhadap tanah air bagi seluruh peserta didik.\r\n\r\nDirgahayu Republik Indonesia!\r\n“Terus Melaju untuk Indonesia Maju.”', 'uploads/kegiatan/hut-ri-1-69205d6f8e092.jpg', 'pengumuman', 'active', 1, '2025-11-21 12:39:11', NULL);
+(13, 'Penampilan Modern Dance SMP Ignatius Slamet Riyadi Resinda di Karawang Central Plaza', 'post-6923e25f3ba76', 'Ekstrakurikuler Modern Dance SMP Ignatius Slamet Riyadi Resinda menampilkan tarian energik dan kompak di KCP sebagai bagian dari kegiatan tampil di ruang publik. Kegiatan ini merupakan bentuk pengembangan bakat siswa serta ajang pengalaman nyata tampil di hadapan masyarakat.', 'Kegiatan penampilan Modern Dance SMP Ignatius Slamet Riyadi Resinda di Karawang Central Plaza berlangsung meriah dan penuh semangat. Para anggota MD menunjukkan kekompakan gerakan dan koreografi yang telah dilatih secara intensif. Dengan kostum seragam dan musik yang upbeat, para siswa berhasil menarik perhatian banyak pengunjung mall.\r\n\r\nSelama kegiatan berlangsung, siswa tampil dengan percaya diri dan mampu memberikan kesan positif melalui energi dan ekspresi yang kuat. Dokumentasi mencakup momen persiapan sebelum tampil, proses koreografi di panggung, interaksi dengan penonton, hingga sesi foto bersama setelah pertunjukan.\r\n\r\nKegiatan ini sekaligus menjadi wadah pengembangan bakat dan karakter, mulai dari kerja sama tim, kedisiplinan, hingga keberanian tampil di ruang publik. Modern Dance berhasil membawa nama sekolah dan menunjukkan bahwa ekstrakurikuler seni di SMP Ignatius Slamet Riyadi Resinda terus berkembang.', 'uploads/kegiatan/perform-ekskull-md-di-kcp-6923e25f3ba87.jpeg', 'umum', 'active', 1, '2025-11-24 04:43:11', NULL),
+(14, 'Penampilan Selasar Band SMP Ignatius Slamet Riyadi Resinda di Karawang Central Plaza', 'post-6923e28b103d5', 'Selasar Band dari SMP Ignatius Slamet Riyadi Resinda berhasil menampilkan musik terbaik mereka di KCP. Dengan harmonisasi yang solid, penampilan ini menjadi bentuk nyata dari pembinaan bakat musik siswa serta kesempatan tampil di panggung publik.', 'Penampilan Selasar Band di Karawang Central Plaza menjadi salah satu momen penting dalam kegiatan pengembangan seni musik di SMP Ignatius Slamet Riyadi Resinda. Para personel band tampil membawakan beberapa lagu pilihan dengan aransemen yang rapi dan pembawaan penuh percaya diri.\r\n\r\nDokumentasi kegiatan menampilkan suasana latihan sebelum tampil, soundcheck, aksi panggung masing-masing personel, hingga respon antusias dari penonton. Vokal yang kuat, permainan gitar dan bass yang kompak, serta ketukan drum yang stabil membuat penampilan mereka semakin hidup.\r\n\r\nKegiatan tampil di KCP memberikan pengalaman bermusik di panggung publik yang sangat bermanfaat bagi siswa. Selain menunjukkan kreativitas, kegiatan ini juga memperkuat kerja sama tim, disiplin dalam latihan, serta keberanian unjuk diri.\r\n\r\nSelasar Band berhasil mempersembahkan penampilan yang membanggakan bagi sekolah serta menjadi inspirasi bagi siswa lain untuk terus mengembangkan bakat di bidang musik.', 'uploads/kegiatan/perform-siswa-isr-selaras-band-di-kcp-6923e28b103e1.jpeg', 'umum', 'active', 1, '2025-11-24 04:43:55', NULL),
+(15, 'Latihan Dasar Kepemimpinan (LDK) OSIS SMP Ignatius Slamet Riyadi Resinda Tahun 2025', 'post-6923e33ce0592', 'Kegiatan Latihan Dasar Kepemimpinan (LDK) OSIS SMP Ignatius Slamet Riyadi Resinda dilaksanakan untuk membekali pengurus OSIS baru dengan keterampilan kepemimpinan, kerja sama tim, disiplin, serta karakter tanggung jawab dalam menjalankan amanah organisasi sekolah.', 'Kegiatan Latihan Dasar Kepemimpinan (LDK) OSIS SMP Ignatius Slamet Riyadi Resinda tahun 2025 berlangsung dengan lancar dan penuh antusiasme. Kegiatan ini merupakan agenda rutin sekolah yang bertujuan membentuk karakter kepemimpinan siswa, terutama bagi para pengurus OSIS periode terbaru.\r\n\r\nSelama kegiatan LDK, para peserta mendapatkan materi tentang kepemimpinan, komunikasi efektif, manajemen organisasi, serta pembentukan karakter. Sesi pelatihan dipandu oleh pembina OSIS dan narasumber yang berpengalaman di bidang kepemimpinan pelajar. Selain materi di dalam ruangan, peserta juga mengikuti kegiatan luar ruangan yang dirancang untuk melatih kerja sama, kekompakan, dan problem solving melalui sejumlah simulasi dan permainan edukatif.\r\n\r\nDokumentasi kegiatan mencakup momen pembukaan, pemaparan materi, diskusi kelompok, praktik kepemimpinan, hingga sesi evaluasi dan penutupan. Seluruh kegiatan berjalan tertib dan penuh semangat, menunjukkan komitmen siswa untuk menjadi pengurus OSIS yang kreatif, bertanggung jawab, dan mampu memberikan kontribusi positif bagi sekolah.\r\n\r\nMelalui kegiatan ini, diharapkan para pengurus OSIS memiliki bekal kemampuan organisasi, karakter kepemimpinan, serta kesiapan menjalankan program-program OSIS selama satu periode ke depan. SMP Ignatius Slamet Riyadi Resinda terus berkomitmen membimbing siswa agar menjadi pemimpin muda yang berintegritas dan berprestasi', 'uploads/kegiatan/kegiatan-ldk-osis-compressed-6923e33ce05c0.jpg', 'umum', 'active', 1, '2025-11-24 04:46:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -141,10 +148,10 @@ INSERT INTO `kegiatan` (`id`, `title`, `slug`, `excerpt`, `content`, `image_path
 --
 
 CREATE TABLE `kegiatan_foto` (
-  `id` int NOT NULL,
-  `kegiatan_id` int NOT NULL,
-  `image_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `kegiatan_id` int(11) NOT NULL,
+  `image_path` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -152,14 +159,9 @@ CREATE TABLE `kegiatan_foto` (
 --
 
 INSERT INTO `kegiatan_foto` (`id`, `kegiatan_id`, `image_path`, `created_at`) VALUES
-(4, 7, 'uploads/kegiatan/lomba-bksn-2-69205bcc7311d.jpeg', '2025-11-21 12:32:12'),
-(5, 7, 'uploads/kegiatan/lomba-bksn-3-69205bcc7368c.jpeg', '2025-11-21 12:32:12'),
-(6, 7, 'uploads/kegiatan/lomba-bksn-4-69205bcc73a7c.jpeg', '2025-11-21 12:32:12'),
-(7, 7, 'uploads/kegiatan/lomba-bksn-5-69205bcc73e4b.jpeg', '2025-11-21 12:32:12'),
-(8, 8, 'uploads/kegiatan/literasi-2-69205cd324bad.jpeg', '2025-11-21 12:36:35'),
-(9, 9, 'uploads/kegiatan/hut-ri-2-69205d6f9014d.jpg', '2025-11-21 12:39:11'),
-(10, 9, 'uploads/kegiatan/hut-ri-3-69205d6f9076c.jpg', '2025-11-21 12:39:11'),
-(11, 9, 'uploads/kegiatan/hut-ri-4-69205d6f90c87.jpg', '2025-11-21 12:39:11');
+(14, 13, 'uploads/kegiatan/perform-ekskull-md-di-kcp-6923e25f3dfac.jpeg', '2025-11-24 04:43:11'),
+(15, 14, 'uploads/kegiatan/perform-siswa-isr-selaras-band-di-kcp-6923e28b131d4.jpeg', '2025-11-24 04:43:55'),
+(16, 15, 'uploads/kegiatan/kegiatan-ldk-osis-compressed-6923e33ce0e86.jpg', '2025-11-24 04:46:52');
 
 -- --------------------------------------------------------
 
@@ -168,15 +170,15 @@ INSERT INTO `kegiatan_foto` (`id`, `kegiatan_id`, `image_path`, `created_at`) VA
 --
 
 CREATE TABLE `render_art` (
-  `id` int NOT NULL,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `image_path` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `category` enum('eksterior','interior','3d_modeling') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'eksterior',
-  `status` enum('active','inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'active',
-  `created_by` int DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `image_path` varchar(500) DEFAULT NULL,
+  `category` enum('eksterior','interior','3d_modeling') NOT NULL DEFAULT 'eksterior',
+  `status` enum('active','inactive') NOT NULL DEFAULT 'active',
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -186,7 +188,8 @@ CREATE TABLE `render_art` (
 INSERT INTO `render_art` (`id`, `title`, `description`, `image_path`, `category`, `status`, `created_by`, `created_at`, `updated_at`) VALUES
 (2, 'Pencak Silat', 'Karya ini menggambarkan kekuatan, keluwesan, dan filosofi mendalam dari seni bela diri tradisional Pencak Silat. Melalui komposisi pose yang dinamis, karya ini menampilkan karakter seorang pesilat yang sedang melakukan gerakan penuh konsentrasi dan ketangkasan.\r\n\r\nDengan latar eksterior yang terasa natural, karya ini memberikan kesan keaslian serta menyatu dengan nilai budaya Nusantara. Detail gerakan tangan, kaki, serta ekspresi tubuh digambarkan secara kuat untuk menunjukkan keberanian, keteguhan hati, dan keharmonisan antara tubuh dan jiwa.\r\n\r\nKarya “Pencak Silat” tidak hanya menonjolkan aspek estetika, tetapi juga menjadi simbol pelestarian budaya Indonesia. Visualnya menggugah rasa bangga dan membuka ruang refleksi mengenai warisan seni bela diri yang telah diwariskan dari generasi ke generasi.', 'uploads/render/pencak-silat-69205ead154ad.jpeg', 'eksterior', 'active', 1, '2025-11-21 12:44:29', NULL),
 (3, 'Paduan suara', 'Karya ini menggambarkan keindahan harmoni yang tercipta ketika suara-suara berbeda bersatu menjadi satu kesatuan. “Paduan Suara” menampilkan sekelompok penyanyi yang berdiri dalam formasi rapi, memancarkan ekspresi penuh semangat, ketulusan, dan keselarasan.\r\n\r\nSetiap figur digambarkan dengan detail yang mencerminkan karakter unik, namun menyatu dalam gerakan dan ekspresi musikal yang sama. Nuansa pencahayaan yang lembut memberikan kesan hangat, sementara latar eksterior menghadirkan suasana terbuka yang mendukung kebebasan berekspresi.\r\n\r\nKarya ini menjadi simbol kebersamaan, disiplin, dan seni kolaborasi. “Paduan Suara” tidak hanya menonjolkan estetika visual, tetapi juga menggambarkan makna mendalam tentang persatuan dan harmoni dalam perbedaan.', 'uploads/render/paduan-suara-69205ee0079dd.jpeg', 'eksterior', 'active', 1, '2025-11-21 12:45:20', NULL),
-(4, 'Mini Orkestra', 'Karya “Mini Orkestra” menghadirkan suasana musikal yang anggun melalui visualisasi sekelompok musisi yang memainkan alat musik dalam format orkestra kecil. Setiap pemain digambarkan dengan fokus dan ekspresi yang hidup, mencerminkan kecintaan mereka terhadap musik.\r\n\r\nKomposisi visual menggambarkan harmoni antara alat musik gesek, tiup, dan perkusi yang berpadu menciptakan alunan melodi yang indah. Detail pada gesture tubuh, posisi alat musik, serta interaksi antar pemain memberikan kesan dinamisme dan kekompakan sebuah ansambel profesional meski dalam skala mini.\r\n\r\nLatar eksterior yang digunakan memberikan kesan terbuka dan hangat, menambah kesan bahwa musik dapat dinikmati di ruang mana pun. Karya ini menggambarkan pesan bahwa musik adalah bahasa universal yang dapat mempersatukan siapa saja.\r\n\r\n“Mini Orkestra” menjadi representasi visual dari disiplin, harmoni, dan keindahan seni pertunjukan yang diwujudkan dalam bentuk yang sederhana namun memukau.', 'uploads/render/mini-orkestra-69205f557fab3.jpeg', 'eksterior', 'active', 1, '2025-11-21 12:47:17', NULL);
+(4, 'Mini Orkestra', 'Karya “Mini Orkestra” menghadirkan suasana musikal yang anggun melalui visualisasi sekelompok musisi yang memainkan alat musik dalam format orkestra kecil. Setiap pemain digambarkan dengan fokus dan ekspresi yang hidup, mencerminkan kecintaan mereka terhadap musik.\r\n\r\nKomposisi visual menggambarkan harmoni antara alat musik gesek, tiup, dan perkusi yang berpadu menciptakan alunan melodi yang indah. Detail pada gesture tubuh, posisi alat musik, serta interaksi antar pemain memberikan kesan dinamisme dan kekompakan sebuah ansambel profesional meski dalam skala mini.\r\n\r\nLatar eksterior yang digunakan memberikan kesan terbuka dan hangat, menambah kesan bahwa musik dapat dinikmati di ruang mana pun. Karya ini menggambarkan pesan bahwa musik adalah bahasa universal yang dapat mempersatukan siapa saja.\r\n\r\n“Mini Orkestra” menjadi representasi visual dari disiplin, harmoni, dan keindahan seni pertunjukan yang diwujudkan dalam bentuk yang sederhana namun memukau.', 'uploads/render/mini-orkestra-69205f557fab3.jpeg', 'eksterior', 'active', 1, '2025-11-21 12:47:17', NULL),
+(5, 'test', 'test', 'uploads/render/test-6922b49e04214.png', 'eksterior', 'active', 1, '2025-11-23 07:15:42', NULL);
 
 --
 -- Indexes for dumped tables
@@ -250,43 +253,43 @@ ALTER TABLE `render_art`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `berita_foto`
 --
 ALTER TABLE `berita_foto`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `kegiatan_foto`
 --
 ALTER TABLE `kegiatan_foto`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `render_art`
 --
 ALTER TABLE `render_art`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
