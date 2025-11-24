@@ -1,18 +1,8 @@
 <?php
 
-// === PATH GAMBAR BERITA: contek pola dashboard.php (relatif dari /admin → ../) ===
-if (!function_exists('berita_src')) {
-  function berita_src($p) {
-    $p = trim((string)$p);
-    if ($p === '') return '../assets/img/placeholder.png';
-    if (preg_match('#^https?://#i', $p)) return $p; // sudah absolut
-    $p = ltrim(str_replace('\\','/',$p), '/');
-    if (strpos($p, 'uploads/berita/') === false) {
-      $p = 'uploads/berita/' . basename($p);
-    }
-    return '../' . $p; // hasil: ../uploads/berita/xxx.jpg
-  }
-}
+require_once __DIR__ . '/../helpers/path.php';
+
+
 
 
 // ==== ROBUST IMAGE HELPER (fix thumbnail tidak muncul) ====
@@ -673,24 +663,36 @@ $bCatLabels = ['akademik'=>'Akademik','prestasi'=>'Prestasi','kegiatan'=>'Kegiat
     <aside class="w-64 bg-purple-800 text-purple-100 min-h-screen">
       <div class="px-6 py-5 text-lg font-bold">Admin Panel</div>
       <nav class="space-y-1">
-        <a href="#" id="link-overview" class="flex items-center px-6 py-3 hover:bg-purple-700 hover:text-white <?= $tab==='overview'?'bg-purple-700 text-white':'' ?>">
-          <i class="fas fa-home mr-3"></i> Overview
+        <a href="dashboard.php?tab=overview" 
+          class="flex items-center px-6 py-3 hover:bg-purple-700 hover:text-white <?= $tab==='overview' ? 'bg-purple-700 text-white' : '' ?>">
+            <i class="fas fa-home mr-3"></i> Overview
         </a>
-        <a href="./dashboard.php?tab=gallery" id="link-gallery" class="flex items-center px-6 py-3 hover:bg-purple-700 hover:text-white <?= $tab==='gallery'?'bg-purple-700 text-white':'' ?>">
-          <i class="fas fa-images mr-3"></i> Kelola Galeri
+
+        <a href="dashboard.php?tab=gallery" 
+          class="flex items-center px-6 py-3 hover:bg-purple-700 hover:text-white <?= $tab==='gallery' ? 'bg-purple-700 text-white' : '' ?>">
+            <i class="fas fa-images mr-3"></i> Kelola Galeri
         </a>
-        <a href="./dashboard.php?tab=kegiatan" id="link-kegiatan" class="flex items-center px-6 py-3 hover:bg-purple-700 hover:text-white <?= $tabk==='kegiatan'?'bg-purple-700 text-white':'' ?>">
-          <i class="fas fa-newspaper mr-3"></i> Kelola Kegiatan
+
+        <a href="dashboard.php?tab=kegiatan" 
+          class="flex items-center px-6 py-3 hover:bg-purple-700 hover:text-white <?= $tab==='kegiatan' ? 'bg-purple-700 text-white' : '' ?>">
+            <i class="fas fa-newspaper mr-3"></i> Kelola Kegiatan
         </a>
-        <a href="./dashboard.php?tab=render" id="link-render" class="flex items-center px-6 py-3 hover:bg-purple-700 hover:text-white <?= $tab==='render'?'bg-purple-700 text-white':'' ?>">
-          <i class="fas fa-cube mr-3"></i> Event Sekolah
+
+        <a href="dashboard.php?tab=render" 
+          class="flex items-center px-6 py-3 hover:bg-purple-700 hover:text-white <?= $tab==='render' ? 'bg-purple-700 text-white' : '' ?>">
+            <i class="fas fa-cube mr-3"></i> Event Sekolah
         </a>
-        <a href="#" id="link-berita" class="flex items-center px-6 py-3 hover:bg-purple-700 hover:text-white <?= $btab==='berita'?'bg-purple-700 text-white':'' ?>">
+
+        <a href="dashboard_berita.php?tab=berita" 
+          class="flex items-center px-6 py-3 hover:bg-purple-700 hover:text-white">
           <i class="fas fa-rss mr-3"></i> Kelola Berita
         </a>
-        <a href="logout.php" class="flex items-center px-6 py-3 hover:bg-purple-700 hover:text-white">
+
+        <a href="logout.php" 
+          class="flex items-center px-6 py-3 hover:bg-purple-700 hover:text-white">
           <i class="fas fa-right-from-bracket mr-3"></i> Logout
         </a>
+
       </nav>
     </aside>
 
@@ -798,7 +800,7 @@ $bCatLabels = ['akademik'=>'Akademik','prestasi'=>'Prestasi','kegiatan'=>'Kegiat
                     <tr class="hover:bg-gray-50">
                       <td class="px-6 py-3">
                         <?php if (!empty($p['image_path'])): ?>
-                          <img src="<?= h(berita_src($p['image_path'] ?? '')) ?>" class="h-12 w-12 object-cover rounded-lg border border-gray-200" alt="" onerror="this.onerror=null;this.src=\'../assets/img/placeholder.png\';">
+                          <img src="<?= h(img_src($p['image_path'] ?? '')) ?>" class="h-12 w-12 object-cover rounded-lg border border-gray-200" alt="" onerror="this.onerror=null;this.src=\'../assets/img/placeholder.png\';">
                         <?php else: ?>
                           <div class="h-12 w-12 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 border border-gray-200"></div>
                         <?php endif; ?>
@@ -925,7 +927,7 @@ $bCatLabels = ['akademik'=>'Akademik','prestasi'=>'Prestasi','kegiatan'=>'Kegiat
                     </label>
                     <?php if ($bmode==='edit' && !empty($bEditing['image_path'])): ?>
                       <div class="flex items-center gap-3 mt-1 mb-2">
-                        <img src="/company-profil-sd/<?= h($bEditing['image_path']) ?>" class="h-20 w-32 object-cover rounded-lg border border-gray-200" alt="" onerror="this.onerror=null;this.src=\'../assets/img/placeholder.png\';">
+                        <img src="<?= h(img_src($bEditing['image_path'])) ?>" class="h-20 w-32 object-cover rounded-lg border border-gray-200" alt="" onerror="this.onerror=null;this.src=\'../assets/img/placeholder.png\';">
                         <span class="text-xs text-gray-500">Biarkan kosong jika tidak ingin mengganti</span>
                       </div>
                     <?php endif; ?>
@@ -957,7 +959,7 @@ $bCatLabels = ['akademik'=>'Akademik','prestasi'=>'Prestasi','kegiatan'=>'Kegiat
                           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
                             <?php foreach ($existing as $ph): ?>
                               <div class="group relative border rounded-lg overflow-hidden hover:border-blue-500 transition-all">
-                                <img src="/company-profil-sd/<?= h($ph['image_path']) ?>" class="h-24 w-full object-cover" alt="" onerror="this.onerror=null;this.src=\'../assets/img/placeholder.png\';">
+                                <img src="<?= h(img_src($ph['image_path'])) ?>" class="h-24 w-full object-cover" alt="" onerror="this.onerror=null;this.src=\'../assets/img/placeholder.png\';">
                                 <form action="?tab=berita&bmode=delphoto" method="post"
                                       class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
                                       onsubmit="return confirm('Hapus foto ini?')">
